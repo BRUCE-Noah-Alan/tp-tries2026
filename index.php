@@ -1,29 +1,42 @@
 <?php
-require_once 'tries.php';
+require_once "tris.php";
 
-$t = [4, 5, 8, 0, 1, 1];
-$n   = count($t);
+$tab = [100 , 500 , 1000 , 2000 , 5000 , 10000];
+ $trie = triBulles ( $tab ) ;
+ $time=triBullesChrono($tab);
+ $compa=triBullesCompte($tab);
+ echo "voici le tableau avant:".implode(',',$tab)."<br>";
+ echo "le voici apres:".implode (', ', $trie )." avec $compa comparaisons et $time ms <br>" ;
+ 
+ echo"--------------------------------TRI SELECTION<br>";
 
-echo "avant de trier : " . implode(", ", $t) . "\n";
+//  $tailles = [100 , 500 , 1000 , 2000 , 5000 , 10000];
 
-echo "Tri à bulles :\n";
-
-echo implode (", ", triBulles($t)) . "\n";
-
-echo "L'algorithme tri à bulles a fait ".
-    triBullesCompte($t).
-    " comparaisons pour trier un tableau de ".
-    count($t) . " éléments.\n";    
-
-echo "Temps d'exécution : " . triBullesChrono($t) . " ms\n"; 
-
-
-$tailles = [100, 500, 1000, 2000, 5000, 10000];
-
-foreach ($tailles as $n) {
-    $tab = range($n, 1); 
-
-    $nbComp = triBullesCompte($tab);
-    $temps = triBullesChrono($tab);
-    echo "n = $n : $nbComp comparaisons, $temps ms\n";
-}
+//  foreach ( $tailles as $n ) {
+//  $tab = range ( $n , 1) ; // [n, n -1 , ... , 2 , 1] = cas defav
+//  $nbComp = triBullesCompt ( $tab ) ;
+//  $temps = triBullesChrono ( $tab ) ;
+//  echo "n = $n : $nbComp comparaisons , $temps ms <br>";
+//  }
+$tab = [5 , 3 , 8 , 1 , 4];
+$trie = triSelection( $tab ) ;
+echo "voici le tableau avant:".implode(',',$tab)."<br>";
+echo "le voici apres:".implode (', ', $trie )."<br>" ;
+$tab = [100 , 500 , 1000 , 2000 , 5000 , 10000];
+ $trie = triSelection ( $tab ) ;
+ $time=triSelectionChrono($tab);
+ $compa=triSelectionCompte($tab);
+ echo "voici le tableau avant:".implode(',',$tab)."<br>";
+ echo "le voici apres:".implode (', ', $trie )." avec $compa comparaisons et $time ms <br>" ;
+ echo"--------------------------------TRI INSERTION<br>";
+$tab = [10000 , 500 , 2000 , 5000 , 1000 , 0];
+$trie = triInsertion( $tab ) ;
+echo "voici le tableau avant:".implode(',',$tab)."<br>";
+echo "le voici apres:".implode (', ', $trie )."<br>" ;
+ $tab = [10000 , 500 , 2000 , 5000 , 1000 , 0];
+ $trie = triInsertion ( $tab ) ;
+ $time=triInsertionChrono($tab);
+ $compa=triInsertionCompte($tab);
+ echo "voici le tableau avant:".implode(',',$tab)."<br>";
+ echo "le voici apres:".implode (', ', $trie )." avec $compa comparaisons et $time ms <br>" ;
+?>
